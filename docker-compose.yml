@@ -34,7 +34,7 @@ services:
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
   database_geldarnetwork:
-    image: postgres
+    image: postgis/postgis
     env_file: 
       - .env/development/database_geldarnetwork
     volumes: 
