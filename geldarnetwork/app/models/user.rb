@@ -38,6 +38,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address"}
   has_many :bonds
+  has_many :posts
   has_many :followings,
   -> { Bond.following },
   through: :bonds,
@@ -60,6 +61,10 @@ class User < ApplicationRecord
   scope :requesting, -> { where(state: REQUESTING)}
   scope :blocking, -> { where(state: BLOCKING)}
   before_save :ensure_proper_name_case
+  
+  def to_param
+    username
+  end
   def login
     @login || username || email
   end
