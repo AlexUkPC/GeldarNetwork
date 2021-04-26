@@ -1,0 +1,31 @@
+version: "3" 
+services:
+  web_geldarnetwork:
+    image: alexrogna/geldarnetwork_web:prod
+    expose:
+      - 3000
+    env_file:
+      - .env/production/database_geldarnetwork
+      - .env/production/web_geldarnetwork
+    environment:
+      - VIRTUAL_HOST=geldarnetwork.alexrogna.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=geldarnetwork.alexrogna.com
+    restart: always
+
+  database_geldarnetwork:
+    image: postgres
+    env_file:
+      - .env/production/database_geldarnetwork
+    volumes:
+      - db_data_geldarnetwork:/var/lib/postgresql/data
+    restart: always
+    
+  db-migrator_geldarnetwork:
+    image: alexrogna/geldarnetwork_web:prod
+    command: ["./wait-for", "--timeout=300", "database_geldarnetwork:5432", "--", "bin/rails", "db:create" , "db:migrate"]
+    env_file:
+      - .env/production/database_geldarnetwork
+      - .env/production/web_geldarnetwork
+volumes:
+  db_data_geldarnetwork:
