@@ -9,6 +9,7 @@ class Post::Creator < ApplicationService
   def call
       case postable_type
       when "Status" then create_a_status_update
+      when "Sight" then create_a_sight_update
       else false
       end
   rescue
@@ -46,5 +47,27 @@ class Post::Creator < ApplicationService
         attach_pictures!
       end
       post.persisted?
+  end
+  def place
+    @place ||= begin
+      place = Place.find(params[:sight_place_id])
+    end
+  end
+
+  def create_a_sight_update
+    sight = Sight.new(
+      place: place,
+      activity_type: Sight::CHECKIN
+    )
+    post.postable = sight
+    post.user = creator
+    post.thread = thread
+    post.save
+
+    if post.persisted?
+      attach_pictures!
+    end
+
+    post.persisted?
   end
 end

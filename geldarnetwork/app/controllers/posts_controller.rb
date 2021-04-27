@@ -15,6 +15,7 @@ class PostsController < ApplicationController
         params.require(:post).permit(
         :postable_type,
         :status_text,
+        :sight_place_id,
         :thread_id,
         :pictures => [],
         )

@@ -31,4 +31,5 @@ class Post < ApplicationRecord
     where(user: poster)
   }
   attr_accessor :status_text
+  attr_accessor :sight_place_id
 end
