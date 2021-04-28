@@ -16,6 +16,7 @@ services:
       - .env/development/web_geldarnetwork
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server_geldarnetwork
+      - DELAYED_JOB_HOST=delayed_job_geldarnetwork
   webpack_dev_server_geldarnetwork:
     build:
       context: .
@@ -33,6 +34,21 @@ services:
       - .env/development/web_geldarnetwork
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+  delayed_job_geldarnetwork:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    command: ./bin/rails jobs:work
+    volumes: 
+      - ./geldarnetwork:/opt/app
+      - gem_cache_geldarnetwork:/gems
+    env_file: 
+      - .env/development/database_geldarnetwork
+      - .env/development/web_geldarnetwork
+    environment: 
+      - DELAYED_JOB_HOST=0.0.0.0
   database_geldarnetwork:
     image: postgis/postgis
     env_file: 
