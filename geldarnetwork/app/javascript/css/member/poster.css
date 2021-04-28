@@ -107,7 +107,7 @@
 }
 .body-member
 .poster .controls .options .icon {
-    @aplly rounded-full allign-middle;
+    @apply rounded-full align-middle;
     height: 31px;
     width: 31px;
     color: #a0aec0;
