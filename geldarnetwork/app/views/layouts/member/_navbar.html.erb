@@ -14,6 +14,10 @@
                 class: "linked-icon #{"active" if on_self?}" do %>
                 <%= evil_icon "ei-user" %>
             <% end %>
+            <%= link_to settings_user_path, 
+                class: "linked-icon #{"active" if on_settings?}" do %>
+                <%= evil_icon "ei-gear" %>
+            <% end %>
         </div>
         <div>
             <%= link_to destroy_user_session_path,

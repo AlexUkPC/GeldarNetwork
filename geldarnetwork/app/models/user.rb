@@ -24,6 +24,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  extract_roles_from :role
   devise :database_authenticatable, 
     :registerable,
     :recoverable, 
@@ -67,6 +68,9 @@ class User < ApplicationRecord
   end
   def login
     @login || username || email
+  end
+  def role
+    username == "alex" ? :admin : :member
   end
   def self.find_authenticatable(login)
       where("username = :value OR email = :value", value: login).first
