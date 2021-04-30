@@ -7,7 +7,7 @@ nav.topnav{
 
 .body-member
 nav.topnav h1{
-    @apply font-semibold text-2xl text-dark-400;
+    @apply font-bold text-4xl text-dark-200;
     @apply mr-6;
 }
 
