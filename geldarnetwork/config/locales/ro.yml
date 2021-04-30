@@ -1,0 +1,11 @@
+ro:
+  common: 
+    say: Spune
+    followers:
+      zero: urmaritori
+      one: urmaritor
+      other: urmaritori
+      
+  posts:
+    form:
+      whats_happening: Ce se intampla?

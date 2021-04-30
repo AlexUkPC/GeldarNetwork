@@ -23,4 +23,10 @@ class ApplicationController < ActionController::Base
     :password_confirmation
     ])
   end
+  around_action :set_locale
+
+  def set_locale(&action)
+    session[:locale] = params[:locale] if params[:locale]
+    I18n.with_locale(session[:locale] || I18n.default_locale, &action)
+  end
 end

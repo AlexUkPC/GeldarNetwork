@@ -1,0 +1,10 @@
+en-US:
+  common: 
+    say: Say
+    followers:
+      zero: followers
+      one: follower
+      other: followers
+  posts:
+    form:
+      whats_happening: What's happening?

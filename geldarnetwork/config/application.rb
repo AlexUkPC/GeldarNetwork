@@ -22,5 +22,10 @@ module Geldarnetwork
       Devise::Mailer.layout "mailer"
     end
     config.active_job.queue_adapter = :delayed_job
+    config.i18n.available_locales = [
+      :"en-US",
+      :"ro"
+    ]
+    config.i18n.default_locale = :"en-US"
   end
 end

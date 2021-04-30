@@ -11,4 +11,11 @@ module ApplicationHelper
       User.find_by_username!(username)
     end
   end
+  def language_selector
+    if I18n.locale == :"en-US"
+      link_to "Ro", url_for(locale: 'ro')
+    else
+      link_to "En", url_for(locale: 'en-US')
+    end
+  end
 end
