@@ -11,16 +11,27 @@ services:
       - VIRTUAL_HOST=geldarnetwork.alexrogna.com
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=geldarnetwork.alexrogna.com
+      - DELAYED_JOB_HOST=delayed_job_geldarnetwork
     restart: always
 
+  delayed_job_geldarnetwork:
+    image: alexrogna/geldarnetwork_web:prod
+    command: ./bin/rails jobs:work
+    env_file: 
+      - .env/production/database_geldarnetwork
+      - .env/production/web_geldarnetwork
+    environment: 
+      - DELAYED_JOB_HOST=0.0.0.0  
+    restart: always
+      
   database_geldarnetwork:
-    image: postgres
+    image: postgis/postgis
     env_file:
       - .env/production/database_geldarnetwork
     volumes:
       - db_data_geldarnetwork:/var/lib/postgresql/data
     restart: always
-    
+
   db-migrator_geldarnetwork:
     image: alexrogna/geldarnetwork_web:prod
     command: ["./wait-for", "--timeout=300", "database_geldarnetwork:5432", "--", "bin/rails", "db:create" , "db:migrate"]
