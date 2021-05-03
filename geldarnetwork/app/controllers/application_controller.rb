@@ -29,4 +29,7 @@ class ApplicationController < ActionController::Base
     session[:locale] = params[:locale] if params[:locale]
     I18n.with_locale(session[:locale] || I18n.default_locale, &action)
   end
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || timelines_path
+  end
 end
