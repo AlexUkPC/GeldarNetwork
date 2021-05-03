@@ -12,6 +12,8 @@ services:
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=geldarnetwork.alexrogna.com
       - DELAYED_JOB_HOST=delayed_job_geldarnetwork
+    networks:
+      - proxy
     restart: always
 
   delayed_job_geldarnetwork:
@@ -22,6 +24,8 @@ services:
       - .env/production/web_geldarnetwork
     environment: 
       - DELAYED_JOB_HOST=0.0.0.0  
+    networks:
+      - proxy
     restart: always
       
   database_geldarnetwork:
@@ -40,3 +44,5 @@ services:
       - .env/production/web_geldarnetwork
 volumes:
   db_data_geldarnetwork:
+networks:
+  proxy:
