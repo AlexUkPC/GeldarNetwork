@@ -61,7 +61,7 @@
                 <% end %>
                 </div>
             <% end %>
-        <% if can? current_user, :see_controllers, @current_user %>
+        <% if can? current_user, :see_delete_link, @current_user %>
             <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
         </div>

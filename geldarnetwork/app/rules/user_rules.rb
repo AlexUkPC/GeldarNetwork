@@ -9,7 +9,7 @@ class UserRules < Bali::Rules
   role :admin do
     can :see_timeline
     can :see_follower_requests
-    can :see_controllers
+    can :see_delete_link
   end
   can :follow do |user, current_user|
     user != current_user &&
