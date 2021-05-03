@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :timelines,
       only: [:index, :show],
       param: :username
-    resources :posts, only: [:create, :show]
+    resources :posts, only: [:create, :show, :destroy]
     resources :bonds, param: :username do
       member do
         post :follow
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
-  get 'home/index'
   root to: 'home#index'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
