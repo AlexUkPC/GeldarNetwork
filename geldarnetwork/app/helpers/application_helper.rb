@@ -18,4 +18,7 @@ module ApplicationHelper
       link_to "En", url_for(locale: 'en-US')
     end
   end
+  def verbose_date(date)
+    date.strftime('%d %B %Y')
+  end
 end

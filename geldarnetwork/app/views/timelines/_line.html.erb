@@ -28,6 +28,9 @@
             <span class="username">@<%= user.username %></span>
             <% end %>
         </div>
+        <div class="identifier">
+            on <%= verbose_date(post.created_at) %>
+        </div>
         <% if postable.is_a?(Status) %>
             <%= simple_format post.postable.text %>
         <% elsif postable.is_a?(Sight) %>
@@ -58,7 +61,11 @@
                 <% end %>
                 </div>
             <% end %>
+        <% if can? current_user, :see_controllers, @current_user %>
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         </div>
+        
     </div>
 </div>
 
