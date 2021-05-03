@@ -29,7 +29,7 @@
             <% end %>
         </div>
         <div class="identifier">
-            on <%= verbose_date(post.created_at) %>
+            <%= verbose_date(post.created_at) %>
         </div>
         <% if postable.is_a?(Status) %>
             <%= simple_format post.postable.text %>

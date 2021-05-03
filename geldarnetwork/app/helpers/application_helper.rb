@@ -19,7 +19,7 @@ module ApplicationHelper
     end
   end
   def verbose_date(date)
-    date.strftime('%d %B %Y')
+    date.strftime('at %H:%M on %d %B %Y')
   end
   def user_profile_picture(user, size=40)
     if user.profile_picture.attached?
