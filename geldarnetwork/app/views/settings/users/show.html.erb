@@ -29,7 +29,9 @@
                 </span>
             </div>
         </div>
-        
+        <div class="field">
+            <p> <%= link_to "Unhappy? Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        </div>
         <div>
             <%= f.submit "Update", class: "submit-btn" %>
         </div>
