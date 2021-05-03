@@ -39,27 +39,31 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :first_name, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address"}
-  has_many :bonds
-  has_many :posts
+  has_many :bonds, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_one_attached :profile_picture
   has_many :followings,
   -> { Bond.following },
   through: :bonds,
-  source: :friend
+  source: :friend, 
+  dependent: :destroy
 
   has_many :follow_requests,
   -> { Bond.requesting },
   through: :bonds,
-  source: :friend
+  source: :friend, 
+  dependent: :destroy
 
   has_many :inward_bonds,
   class_name: "Bond",
-  foreign_key: :friend_id
+  foreign_key: :friend_id, 
+  dependent: :destroy
 
   has_many :followers,
   -> { Bond.following },
   through: :inward_bonds,
-  source: :user
+  source: :user, 
+  dependent: :destroy
   scope :following, -> { where(state: FOLLOWING)}
   scope :requesting, -> { where(state: REQUESTING)}
   scope :blocking, -> { where(state: BLOCKING)}

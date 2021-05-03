@@ -23,8 +23,8 @@ class Post < ApplicationRecord
   belongs_to :postable, polymorphic: true
   belongs_to :user
   belongs_to :thread, class_name: "Post", optional: true
-  has_many :replies, class_name: "Post", foreign_key: "thread_id"
-  has_many :pictures
+  has_many :replies, class_name: "Post", foreign_key: "thread_id", dependent: :destroy
+  has_many :pictures, dependent: :destroy
   scope :not_reply, -> { where(thread_id: nil)}
   scope :written_by, -> (username) {
     poster = User.find_by_username(username)
