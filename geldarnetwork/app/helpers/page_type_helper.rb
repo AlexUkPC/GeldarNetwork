@@ -14,6 +14,9 @@ module PageTypeHelper
   def on_settings?
     controller_path.start_with? "settings"
   end
+  def on_edit?
+    controller_path.start_with? "edit"
+  end
   def on_following_list?
     controller_path == "bonds" &&
       action_name == "following"

@@ -5,6 +5,12 @@
         method: :patch do |f| %>
 
         <div class="field">
+            <%= f.label :profile_picture %>
+            <%= image_tag user_profile_picture(current_user, 100) %>
+            <%= f.file_field :profile_picture %>
+        </div>
+
+        <div class="field">
             <%= f.label :username %>
             <%= f.text_field :username %>
         </div>
@@ -18,7 +24,7 @@
             <%= f.label :last_name %>
             <%= f.text_field :last_name %>
         </div>
-
+        
         <div class="field">
             <%= f.label :is_public, "Public account?" %>
             <div class="checkbox-unit">

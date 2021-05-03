@@ -21,4 +21,11 @@ module ApplicationHelper
   def verbose_date(date)
     date.strftime('%d %B %Y')
   end
+  def user_profile_picture(user, size=40)
+    if user.profile_picture.attached?
+      user.profile_picture.variant(resize: "#{size}x#{size}!")
+    else
+     gravatar_image_url(user.email, size: size)
+    end
+  end
 end

@@ -6,13 +6,13 @@ class Settings::UsersController < ApplicationController
     current_user.assign_attributes permitted_params
     changes = current_user.changes
 
-    if changes.any?
+    
       if current_user.save
         flash[:notice] = "Profile's settings updated"
       else 
         flash[:alert] = "Unablet to update the profile settings"
       end
-    end
+    
 
     redirect_to settings_user_path
   end
@@ -24,6 +24,7 @@ class Settings::UsersController < ApplicationController
       :first_name,
       :last_name,
       :is_public,
+      :profile_picture,
     )
   end
 end

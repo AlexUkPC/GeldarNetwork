@@ -20,7 +20,17 @@ class ApplicationController < ActionController::Base
     :username,
     :email,
     :password,
-    :password_confirmation
+    :password_confirmation,
+    ])
+    devise_parameter_sanitizer.permit(:account_update, keys:[
+    :first_name,
+    :last_name,
+    :username,
+    :email,
+    :password,
+    :password_confirmation,
+    :profile_picture,
+    :is_public,
     ])
   end
   around_action :set_locale
