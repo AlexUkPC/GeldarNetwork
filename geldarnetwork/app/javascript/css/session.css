@@ -1,9 +1,9 @@
 .body-session{
-    @apply bg-gray-200 font-sans h-screen w-screen;
+    @apply bg-dark-800 font-sans h-screen w-screen;
 }
 .body-session
 h1.title{
-    @apply font-hairline text-center text-4xl;
+    @apply font-hairline text-center text-4xl text-white;
 }
 .body-session
 .container {
