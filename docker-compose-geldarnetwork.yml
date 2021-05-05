@@ -42,6 +42,8 @@ services:
     env_file:
       - .env/production/database_geldarnetwork
       - .env/production/web_geldarnetwork
+    networks:
+      - proxy
 volumes:
   db_data_geldarnetwork:
 networks:
