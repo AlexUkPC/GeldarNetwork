@@ -6,9 +6,10 @@ nav.topnav{
 }
 
 .body-member
-nav.topnav h1{
+nav.topnav img{
     @apply font-bold text-4xl text-dark-200;
     @apply mr-6;
+    width: 120px;
 }
 
 .body-member

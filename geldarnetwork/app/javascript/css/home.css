@@ -5,7 +5,9 @@ header{
 
 .home
 header .title{
-    @apply font-extrabold text-2xl;
+    @apply font-bold text-4xl text-dark-200;
+    @apply mr-6;
+    width: 140px;
 }
 
 .home
