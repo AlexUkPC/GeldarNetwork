@@ -132,3 +132,8 @@
     height: 100px;
     width: 100px;
 }
+.body-member
+.timeline .replies{
+    @apply bg-dark-700;
+    padding-left: 50px;
+}
