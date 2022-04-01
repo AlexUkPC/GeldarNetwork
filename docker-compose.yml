@@ -7,7 +7,7 @@ services:
         USER_ID: "${USER_ID:-1000}"
         GROUP_ID: "${GROUP_ID:-1000}"
     ports:
-      - "3019:3000"
+      - "3018:3000"
     volumes: 
       - ./geldarnetwork:/opt/app
       - gem_cache_geldarnetwork:/gems
@@ -27,7 +27,7 @@ services:
         GROUP_ID: "${GROUP_ID:-1000}"
     command: ./bin/webpack-dev-server
     ports: 
-      - "3054:3054"
+      - "4018:4018"
     volumes: 
       - ./geldarnetwork:/opt/app
       - gem_cache_geldarnetwork:/gems
